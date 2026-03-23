@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+<View
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+        <TextView
+            android:id="@+id/tvMovieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- seat GRID -->
+        <GridLayout
+            android:id="@+id/gridSeats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="8"
+            android:rowCount="5"
+            android:layout_marginBottom="16dp"/>
+
+        <!--   -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available"
+                android:layout_marginEnd="16dp"/>
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@android:color/holo_green_dark"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selected"
+                android:layout_marginEnd="16dp"/>
+
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Booked"/>
+        </LinearLayout>
+
+        <!--  summary -->
+        <TextView
+            android:id="@+id/tvSelectedCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selected: 0"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: $0"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnProceedSnacks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Proceed to Snacks"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnBookSeats"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Book Seats"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
