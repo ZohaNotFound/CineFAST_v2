@@ -1,0 +1,74 @@
+package com.example.cine;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.ArrayList;
+
+public class SnackAdapter extends BaseAdapter {
+
+    private Context context;
+    private ArrayList<Snack> snacks;
+    private OnSnackQuantityChangeListener listener;
+
+    public interface OnSnackQuantityChangeListener {
+        void onQuantityChanged();
+    }
+
+    public SnackAdapter(Context context, ArrayList<Snack> snacks, OnSnackQuantityChangeListener listener) {
+        this.context = context;
+        this.snacks = snacks;
+        this.listener = listener;
+    }
+
+    @Override
+    public int getCount() { return snacks.size(); }
+
+    @Override
+    public Object getItem(int position) { return snacks.get(position); }
+
+    @Override
+    public long getItemId(int position) { return position; }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_snack, parent, false);
+        }
+
+        Snack snack = snacks.get(position);
+
+        ImageView snackImage = convertView.findViewById(R.id.snackImage);
+        TextView snackName = convertView.findViewById(R.id.snackName);
+        TextView snackPrice = convertView.findViewById(R.id.snackPrice);
+        TextView tvQuantity = convertView.findViewById(R.id.tvQuantity);
+        Button btnMinus = convertView.findViewById(R.id.btnMinus);
+        Button btnPlus = convertView.findViewById(R.id.btnPlus);
+
+        snackImage.setImageResource(snack.getImageResId());
+        snackName.setText(snack.getName());
+        snackPrice.setText(String.format("$%.2f", snack.getPrice()));
+        tvQuantity.setText(String.valueOf(snack.getQuantity()));
+
+        btnPlus.setOnClickListener(v -> {
+            snack.setQuantity(snack.getQuantity() + 1);
+            tvQuantity.setText(String.valueOf(snack.getQuantity()));
+            if (listener != null) listener.onQuantityChanged();
+        });
+
+        btnMinus.setOnClickListener(v -> {
+            if (snack.getQuantity() > 0) {
+                snack.setQuantity(snack.getQuantity() - 1);
+                tvQuantity.setText(String.valueOf(snack.getQuantity()));
+                if (listener != null) listener.onQuantityChanged();
+            }
+        });
+
+        return convertView;
+    }
+}
