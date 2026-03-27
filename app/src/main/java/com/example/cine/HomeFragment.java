@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
 
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewPager);
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ImageView btnDots = view.findViewById(R.id.btnDots);
 
         viewPager.setAdapter(new HomePagerAdapter(this));
 
@@ -37,37 +37,43 @@ public class HomeFragment extends Fragment {
             tab.setText(position == 0 ? "Now Showing" : "Coming Soon");
         }).attach();
 
-        toolbar.inflateMenu(R.menu.home_menu);
-        toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.view_last_booking) {
-                showLastBooking();
-                return true;
-            }
-            return false;
-        });
+        if (btnDots != null) {
+            btnDots.setOnClickListener(this::showPopupMenu);
+        }
 
         return view;
     }
 
-    private void showLastBooking() {
+    private void showPopupMenu(View view) {
+        PopupMenu popup = new PopupMenu(requireContext(), view);
+        popup.getMenu().add("View Last Booking");
+        popup.setOnMenuItemClickListener(item -> {
+            if (item.getTitle().equals("View Last Booking")) {
+                showLastBookingDialog();
+                return true;
+            }
+            return false;
+        });
+        popup.show();
+    }
+
+    private void showLastBookingDialog() {
         SharedPreferences prefs = requireActivity().getSharedPreferences("CinePrefs", Context.MODE_PRIVATE);
-        String movie = prefs.getString("last_movie", "No previous booking found.");
+        String movie = prefs.getString("last_movie", null);
         int seats = prefs.getInt("last_seats", 0);
         float price = prefs.getFloat("last_price", 0);
 
-        if (seats == 0) {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Last Booking")
-                    .setMessage("No previous booking found.")
-                    .setPositiveButton("OK", null)
-                    .show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Last Booking");
+
+        if (movie == null) {
+            builder.setMessage("No previous booking found.");
         } else {
-            new AlertDialog.Builder(requireContext())
-                    .setTitle("Last Booking")
-                    .setMessage("Movie: " + movie + "\nSeats: " + seats + "\nTotal Price: $" + price)
-                    .setPositiveButton("OK", null)
-                    .show();
+            builder.setMessage("Movie: " + movie + "\nSeats: " + seats + "\nTotal Price: $" + (int)price);
         }
+
+        builder.setPositiveButton("OK", null);
+        builder.show();
     }
 
     private static class HomePagerAdapter extends FragmentStateAdapter {
