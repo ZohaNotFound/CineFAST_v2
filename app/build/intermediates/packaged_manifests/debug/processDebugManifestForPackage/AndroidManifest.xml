@@ -25,17 +25,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.Cine" >
-        <activity
-            android:name="com.example.cine.TicketSummaryActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.cine.SnacksActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.cine.SeatSelectionActivity"
-            android:exported="false" /> <!-- SplashActivity is the launcher -->
+
+        <!-- SplashActivity is the entry point -->
         <activity
             android:name="com.example.cine.SplashActivity"
             android:exported="true" >
@@ -44,15 +36,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Other activities (not exported) -->
-        <activity
-            android:name="com.example.cine.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.cine.HomeActivity"
-            android:exported="false" />
+        </activity>
         <activity
             android:name="com.example.cine.OnboardingActivity"
+            android:exported="false" />
+
+        <!-- MainActivity hosts all fragments -->
+        <activity
+            android:name="com.example.cine.MainActivity"
             android:exported="false" />
 
         <provider
