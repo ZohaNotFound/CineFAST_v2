@@ -14,3 +14,8 @@ app/build/
 .externalNativeBuild
 .cxx
 local.properties
+*.html
+*.bin
+*.txt
+*.bin
+*.bin
