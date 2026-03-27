@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Snacks"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <ListView
+        android:id="@+id/snacksListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+
+    <TextView
+        android:id="@+id/tvSnacksTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Snacks Total: $0.00"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="end" />
+
+    <Button
+        android:id="@+id/btnGoToSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm and View Summary"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
