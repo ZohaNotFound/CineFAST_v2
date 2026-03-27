@@ -22,6 +22,7 @@ drawable plus
 drawable popcorn
 drawable shawshank
 id appNameImage
+id btnBook
 id btnBookSeats
 id btnCandyMinus
 id btnCandyPlus
@@ -52,7 +53,9 @@ id btnShawshankBook
 id btnShawshankTrailer
 id btnToday
 id btnTomorrow
+id btnTrailer
 id buttonGetStarted
+id fragment_container
 id gridSeats
 id imgCandy
 id imgDarkKnight
@@ -67,9 +70,13 @@ id imgNachos
 id imgPopcorn
 id imgShawshank
 id logo
-id main
+id movieDetails
+id moviePoster
+id movieTitle
+id tabLayout
 id todayMovies
 id tomorrowMovies
+id toolbar
 id tvCandyPrice
 id tvCandyQty
 id tvDarkKnightDetails
@@ -106,6 +113,8 @@ id tvSnacksTotal
 id tvTicketTotal
 id tvTime
 id tvTotalPrice
+id viewPager
+id view_last_booking
 layout activity_home
 layout activity_main
 layout activity_onboarding
@@ -113,6 +122,10 @@ layout activity_seat_selection
 layout activity_snacks
 layout activity_splash
 layout activity_ticket_summary
+layout fragment_home
+layout home_menu
+layout item_movie
+menu home_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name

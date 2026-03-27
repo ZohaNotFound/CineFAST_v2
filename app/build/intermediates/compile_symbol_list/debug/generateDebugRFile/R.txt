@@ -20,6 +20,7 @@ int drawable plus 0x0
 int drawable popcorn 0x0
 int drawable shawshank 0x0
 int id appNameImage 0x0
+int id btnBook 0x0
 int id btnBookSeats 0x0
 int id btnCandyMinus 0x0
 int id btnCandyPlus 0x0
@@ -50,7 +51,9 @@ int id btnShawshankBook 0x0
 int id btnShawshankTrailer 0x0
 int id btnToday 0x0
 int id btnTomorrow 0x0
+int id btnTrailer 0x0
 int id buttonGetStarted 0x0
+int id fragment_container 0x0
 int id gridSeats 0x0
 int id imgCandy 0x0
 int id imgDarkKnight 0x0
@@ -65,9 +68,13 @@ int id imgNachos 0x0
 int id imgPopcorn 0x0
 int id imgShawshank 0x0
 int id logo 0x0
-int id main 0x0
+int id movieDetails 0x0
+int id moviePoster 0x0
+int id movieTitle 0x0
+int id tabLayout 0x0
 int id todayMovies 0x0
 int id tomorrowMovies 0x0
+int id toolbar 0x0
 int id tvCandyPrice 0x0
 int id tvCandyQty 0x0
 int id tvDarkKnightDetails 0x0
@@ -104,6 +111,8 @@ int id tvSnacksTotal 0x0
 int id tvTicketTotal 0x0
 int id tvTime 0x0
 int id tvTotalPrice 0x0
+int id viewPager 0x0
+int id view_last_booking 0x0
 int layout activity_home 0x0
 int layout activity_main 0x0
 int layout activity_onboarding 0x0
@@ -111,6 +120,10 @@ int layout activity_seat_selection 0x0
 int layout activity_snacks 0x0
 int layout activity_splash 0x0
 int layout activity_ticket_summary 0x0
+int layout fragment_home 0x0
+int layout home_menu 0x0
+int layout item_movie 0x0
+int menu home_menu 0x0
 int mipmap ic_launcher 0x0
 int mipmap ic_launcher_round 0x0
 int string app_name 0x0
