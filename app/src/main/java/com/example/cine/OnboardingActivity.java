@@ -15,8 +15,8 @@ public class OnboardingActivity extends AppCompatActivity {
 
         Button getStartedButton = findViewById(R.id.buttonGetStarted);
         getStartedButton.setOnClickListener(v -> {
-            //  HomeActivity
-            Intent intent = new Intent(OnboardingActivity.this, HomeActivity.class);
+            // Updated to MainActivity which hosts HomeFragment
+            Intent intent = new Intent(OnboardingActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
