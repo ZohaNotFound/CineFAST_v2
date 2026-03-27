@@ -111,6 +111,8 @@ public class SeatSelectionFragment extends Fragment {
         gridSeats.setColumnCount(cols);
         gridSeats.setRowCount(rows.length);
 
+        int seatSize = (int) (40 * getResources().getDisplayMetrics().density);
+
         for (int r = 0; r < rows.length; r++) {
             for (int c = 1; c <= cols; c++) {
                 String seatId = rows[r] + (c);
@@ -121,11 +123,13 @@ public class SeatSelectionFragment extends Fragment {
                 Button btn = new Button(getContext());
                 btn.setText(seatId);
                 btn.setTag(seat);
+                btn.setTextSize(10);
+                btn.setPadding(0, 0, 0, 0);
                 updateSeatButton(btn, seat);
 
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                params.width = 100;
-                params.height = 100;
+                params.width = seatSize;
+                params.height = seatSize;
                 params.setMargins(4, 4, 4, 4);
                 btn.setLayoutParams(params);
 
@@ -145,7 +149,7 @@ public class SeatSelectionFragment extends Fragment {
                         updateSelectionSummary();
                     });
                 } else {
-                    btn.setEnabled(false); // Disable seats for coming soon
+                    btn.setEnabled(false);
                 }
 
                 gridSeats.addView(btn);
@@ -173,5 +177,6 @@ public class SeatSelectionFragment extends Fragment {
         tvSelectedCount.setText("Selected: " + count);
         tvTotalPrice.setText("Total: $" + (count * PRICE_PER_SEAT));
         btnProceedSnacks.setEnabled(count > 0);
+        btnBookSeats.setEnabled(count > 0);
     }
 }
