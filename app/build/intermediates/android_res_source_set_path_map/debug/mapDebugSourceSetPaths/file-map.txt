@@ -30,10 +30,10 @@ com.example.cine.app-cardview-1.0.0-28 C:\Users\ZT\.gradle\caches\9.2.1\transfor
 com.example.cine.app-lifecycle-livedata-2.6.2-29 C:\Users\ZT\.gradle\caches\9.2.1\transforms\ee177508e2c31756e07eaddaaab30672\workspace\transformed\lifecycle-livedata-2.6.2\res
 com.example.cine.app-profileinstaller-1.4.0-30 C:\Users\ZT\.gradle\caches\9.2.1\transforms\f9ff7a59b6145bce2c643fe812c4a0e6\workspace\transformed\profileinstaller-1.4.0\res
 com.example.cine.app-activity-1.12.4-31 C:\Users\ZT\.gradle\caches\9.2.1\transforms\fb068b82fa8a6fc93c5838120658ea64\workspace\transformed\activity-1.12.4\res
-com.example.cine.app-pngs-32 D:\Cine\app\build\generated\res\pngs\debug
-com.example.cine.app-updated_navigation_xml-33 D:\Cine\app\build\generated\updated_navigation_xml\debug
-com.example.cine.app-packageDebugResources-34 D:\Cine\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.cine.app-packageDebugResources-35 D:\Cine\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.cine.app-debug-36 D:\Cine\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.example.cine.app-debug-37 D:\Cine\app\src\debug\res
-com.example.cine.app-main-38 D:\Cine\app\src\main\res
+com.example.cine.app-pngs-32 D:\CineFAST_v2\app\build\generated\res\pngs\debug
+com.example.cine.app-updated_navigation_xml-33 D:\CineFAST_v2\app\build\generated\updated_navigation_xml\debug
+com.example.cine.app-packageDebugResources-34 D:\CineFAST_v2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.cine.app-packageDebugResources-35 D:\CineFAST_v2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.cine.app-debug-36 D:\CineFAST_v2\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.cine.app-debug-37 D:\CineFAST_v2\app\src\debug\res
+com.example.cine.app-main-38 D:\CineFAST_v2\app\src\main\res
