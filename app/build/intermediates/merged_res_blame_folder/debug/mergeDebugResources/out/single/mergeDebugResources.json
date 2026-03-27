@@ -4,6 +4,10 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\ic_launcher_background.xml"
     },
     {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_fragment_seat_selection.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\fragment_seat_selection.xml"
+    },
+    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_candy.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\candy.png"
     },
@@ -36,20 +40,24 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_home_menu.xml.flat",
-        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\home_menu.xml"
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_name.png.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\name.png"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_nachos.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\nachos.png"
     },
     {
-        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_name.png.flat",
-        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\name.png"
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_home_menu.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\home_menu.xml"
     },
     {
         "merged": "com.example.cine.app-debug-35:/layout_fragment_ticket_summary.xml.flat",
         "source": "com.example.cine.app-main-37:/layout/fragment_ticket_summary.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_fragment_snacks.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\fragment_snacks.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
@@ -76,10 +84,6 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\inception.png"
     },
     {
-        "merged": "com.example.cine.app-debug-35:/layout_fragment_seat_selection.xml.flat",
-        "source": "com.example.cine.app-main-37:/layout/fragment_seat_selection.xml"
-    },
-    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\mipmap-hdpi\\ic_launcher.webp"
     },
@@ -92,16 +96,16 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\interstellar.png"
     },
     {
-        "merged": "com.example.cine.app-debug-35:/layout_item_snack.xml.flat",
-        "source": "com.example.cine.app-main-37:/layout/item_snack.xml"
-    },
-    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_activity_snacks.xml.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\activity_snacks.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_activity_onboarding.xml.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\activity_onboarding.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_fragment_movie_list.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\fragment_movie_list.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_plus.png.flat",
@@ -136,8 +140,16 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\bg.png"
     },
     {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_fragment_ticket_summary.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\fragment_ticket_summary.xml"
+    },
+    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\layout_item_snack.xml.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\layout\\item_snack.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -160,16 +172,16 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\minus.png"
     },
     {
+        "merged": "com.example.cine.app-debug-35:/drawable_bg_image.png.flat",
+        "source": "com.example.cine.app-main-37:/drawable/bg_image.png"
+    },
+    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_dora.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\dora.png"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\mipmap-xxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.cine.app-debug-35:/layout_fragment_movie_list.xml.flat",
-        "source": "com.example.cine.app-main-37:/layout/fragment_movie_list.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\menu_home_menu.xml.flat",
@@ -186,10 +198,6 @@
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable_popcorn.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-37:\\drawable\\popcorn.png"
-    },
-    {
-        "merged": "com.example.cine.app-debug-35:/layout_fragment_snacks.xml.flat",
-        "source": "com.example.cine.app-main-37:/layout/fragment_snacks.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-35:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",

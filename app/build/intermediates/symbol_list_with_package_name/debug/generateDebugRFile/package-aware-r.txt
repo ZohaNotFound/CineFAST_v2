@@ -4,6 +4,7 @@ color black
 color white
 drawable bg
 drawable bg1
+drawable bg_image
 drawable candy
 drawable dark_knight
 drawable dora

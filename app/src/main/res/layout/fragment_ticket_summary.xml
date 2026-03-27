@@ -58,6 +58,14 @@
                 android:text="Snacks: $0.00"
                 android:layout_marginTop="4dp" />
 
+            <TextView
+                android:id="@+id/tvSummarySnacksDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details: None"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -75,6 +83,13 @@
                 android:textColor="@android:color/holo_green_dark" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnSendTicket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Ticket"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/btnFinish"
