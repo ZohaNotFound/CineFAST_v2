@@ -1,6 +1,7 @@
 package com.example.cine;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +61,7 @@ public class SeatSelectionFragment extends Fragment {
         layoutComingSoon = view.findViewById(R.id.layoutComingSoonButtons);
 
         if (movie != null) {
-            tvMovieName.setText("Movie: " + movie.getTitle());
+            tvMovieName.setText(movie.getTitle());
             if (movie.isComingSoon()) {
                 layoutNowShowing.setVisibility(View.GONE);
                 layoutComingSoon.setVisibility(View.VISIBLE);
@@ -108,10 +110,11 @@ public class SeatSelectionFragment extends Fragment {
         int cols = 8;
         List<String> bookedSeats = List.of("A1", "B3", "C5", "D2", "E7");
 
+        gridSeats.removeAllViews();
         gridSeats.setColumnCount(cols);
         gridSeats.setRowCount(rows.length);
 
-        int seatSize = (int) (40 * getResources().getDisplayMetrics().density);
+        int seatSize = (int) (36 * getResources().getDisplayMetrics().density);
 
         for (int r = 0; r < rows.length; r++) {
             for (int c = 1; c <= cols; c++) {
@@ -123,14 +126,14 @@ public class SeatSelectionFragment extends Fragment {
                 Button btn = new Button(getContext());
                 btn.setText(seatId);
                 btn.setTag(seat);
-                btn.setTextSize(10);
+                btn.setTextSize(8);
                 btn.setPadding(0, 0, 0, 0);
                 updateSeatButton(btn, seat);
 
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                 params.width = seatSize;
                 params.height = seatSize;
-                params.setMargins(4, 4, 4, 4);
+                params.setMargins(6, 6, 6, 6);
                 btn.setLayoutParams(params);
 
                 if (movie != null && !movie.isComingSoon()) {
@@ -159,23 +162,29 @@ public class SeatSelectionFragment extends Fragment {
     }
 
     private void updateSeatButton(Button btn, Seat seat) {
+        int color;
         switch (seat.state) {
-            case 0:
-                btn.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
-                break;
             case 1:
-                btn.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+                color = ContextCompat.getColor(requireContext(), android.R.color.holo_green_dark);
                 break;
             case 2:
-                btn.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
+                color = ContextCompat.getColor(requireContext(), android.R.color.darker_gray);
                 break;
+            default:
+                color = ContextCompat.getColor(requireContext(), android.R.color.transparent);
+                btn.setTextColor(ContextCompat.getColor(requireContext(), android.R.color.white));
+                break;
+        }
+        btn.setBackgroundTintList(ColorStateList.valueOf(color));
+        if (seat.state == 0) {
+            btn.setBackgroundResource(R.drawable.seat_available_bg); // We need a stroke drawable
         }
     }
 
     private void updateSelectionSummary() {
         int count = selectedSeats.size();
-        tvSelectedCount.setText("Selected: " + count);
-        tvTotalPrice.setText("Total: $" + (count * PRICE_PER_SEAT));
+        if (tvSelectedCount != null) tvSelectedCount.setText("Selected: " + count);
+        if (tvTotalPrice != null) tvTotalPrice.setText("Total: $" + (count * PRICE_PER_SEAT));
         btnProceedSnacks.setEnabled(count > 0);
         btnBookSeats.setEnabled(count > 0);
     }

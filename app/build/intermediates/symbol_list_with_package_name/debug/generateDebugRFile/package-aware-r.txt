@@ -1,6 +1,7 @@
 com.example.cine
 anim fade_in
 color black
+color purple_primary
 color white
 drawable bg
 drawable bg1
@@ -9,17 +10,18 @@ drawable candy
 drawable dark_knight
 drawable dora
 drawable doremon
+drawable dots
 drawable drink
-drawable ic_launcher_background
-drawable ic_launcher_foreground
 drawable inception
 drawable interstellar
 drawable logo
 drawable minus
 drawable nachos
 drawable name
+drawable oppenheimer
 drawable plus
 drawable popcorn
+drawable seat_available_bg
 drawable shawshank
 id appNameImage
 id btnBook
@@ -36,6 +38,7 @@ id btnDoraBook
 id btnDoraTrailer
 id btnDoremonBook
 id btnDoremonTrailer
+id btnDots
 id btnDrinkMinus
 id btnDrinkPlus
 id btnFinish
@@ -63,6 +66,7 @@ id btnWatchTrailer
 id buttonGetStarted
 id fragment_container
 id gridSeats
+id headerLayout
 id imgCandy
 id imgDarkKnight
 id imgDarkKnightTomorrow
@@ -77,19 +81,21 @@ id imgPopcorn
 id imgShawshank
 id layoutComingSoonButtons
 id layoutNowShowingButtons
+id legendLayout
 id logo
 id movieDetails
 id moviePoster
 id movieTitle
 id recyclerView
+id screenCurve
 id snackImage
 id snackName
 id snackPrice
 id snacksListView
+id summaryTextLayout
 id tabLayout
 id todayMovies
 id tomorrowMovies
-id toolbar
 id tvCandyPrice
 id tvCandyQty
 id tvDarkKnightDetails
@@ -127,6 +133,7 @@ id tvSnacksTotal
 id tvSummaryGrandTotal
 id tvSummaryMovie
 id tvSummarySeats
+id tvSummarySnacksDetails
 id tvSummarySnacksPrice
 id tvSummaryTicketsPrice
 id tvTicketTotal
@@ -149,8 +156,6 @@ layout fragment_ticket_summary
 layout item_movie
 layout item_snack
 menu home_menu
-mipmap ic_launcher
-mipmap ic_launcher_round
 string app_name
 style Base_Theme_Cine
 style Theme_Cine

@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -47,8 +47,8 @@ public class SnackAdapter extends BaseAdapter {
         TextView snackName = convertView.findViewById(R.id.snackName);
         TextView snackPrice = convertView.findViewById(R.id.snackPrice);
         TextView tvQuantity = convertView.findViewById(R.id.tvQuantity);
-        Button btnMinus = convertView.findViewById(R.id.btnMinus);
-        Button btnPlus = convertView.findViewById(R.id.btnPlus);
+        ImageButton btnMinus = convertView.findViewById(R.id.btnMinus);
+        ImageButton btnPlus = convertView.findViewById(R.id.btnPlus);
 
         snackImage.setImageResource(snack.getImageResId());
         snackName.setText(snack.getName());

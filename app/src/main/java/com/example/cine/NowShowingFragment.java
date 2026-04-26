@@ -25,6 +25,7 @@ public class NowShowingFragment extends Fragment {
         movies.add(new Movie("The Dark Knight", "Action", "152 min", R.drawable.dark_knight, false));
         movies.add(new Movie("Inception", "Sci-Fi", "148 min", R.drawable.inception, false));
         movies.add(new Movie("Interstellar", "Sci-Fi", "169 min", R.drawable.interstellar, false));
+        movies.add(new Movie("Oppenheimer", "History/Drama", "180 min", R.drawable.oppenheimer, false));
 
         recyclerView.setAdapter(new MovieAdapter(movies, movie -> {
             SeatSelectionFragment fragment = new SeatSelectionFragment();
