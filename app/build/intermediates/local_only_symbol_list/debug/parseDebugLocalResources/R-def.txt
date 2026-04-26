@@ -25,6 +25,7 @@ drawable popcorn
 drawable seat_available_bg
 drawable shawshank
 id appNameImage
+id btnBack
 id btnBook
 id btnBookSeats
 id btnCandyMinus
@@ -50,6 +51,7 @@ id btnInceptionTrailer
 id btnInceptionTrailerTomorrow
 id btnInterstellarBook
 id btnInterstellarTrailer
+id btnLogin
 id btnMinus
 id btnNachosMinus
 id btnNachosPlus
@@ -60,11 +62,17 @@ id btnProceedSnacks
 id btnSendTicket
 id btnShawshankBook
 id btnShawshankTrailer
+id btnSignUp
 id btnToday
 id btnTomorrow
 id btnTrailer
 id btnWatchTrailer
 id buttonGetStarted
+id cbRememberMe
+id etConfirmPassword
+id etEmail
+id etName
+id etPassword
 id fragment_container
 id gridSeats
 id headerLayout
@@ -123,6 +131,7 @@ id tvNachosQty
 id tvPopcornPrice
 id tvPopcornQty
 id tvQuantity
+id tvRegister
 id tvSeatCount
 id tvSelectedCount
 id tvSelectedDateLabel
@@ -143,9 +152,11 @@ id tvTotalPrice
 id viewPager
 id view_last_booking
 layout activity_home
+layout activity_login
 layout activity_main
 layout activity_onboarding
 layout activity_seat_selection
+layout activity_signup
 layout activity_snacks
 layout activity_splash
 layout activity_ticket_summary

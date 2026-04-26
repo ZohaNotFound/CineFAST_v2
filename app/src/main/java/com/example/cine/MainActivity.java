@@ -1,6 +1,7 @@
 package com.example.cine;
 
 import android.os.Bundle;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,8 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Requirement: Add a toast statement when app launches
+        Toast.makeText(this, "CineFAST", Toast.LENGTH_SHORT).show();
+
         // HomeFragment is already defined in XML as the default fragment.
-        // We'll add a method here to handle fragment swaps.
     }
 
     public void replaceFragment(Fragment fragment) {

@@ -23,6 +23,14 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+
         <!-- MainActivity hosts all fragments -->
         <activity
             android:name=".MainActivity"

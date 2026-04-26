@@ -23,6 +23,7 @@ int drawable popcorn 0x0
 int drawable seat_available_bg 0x0
 int drawable shawshank 0x0
 int id appNameImage 0x0
+int id btnBack 0x0
 int id btnBook 0x0
 int id btnBookSeats 0x0
 int id btnCandyMinus 0x0
@@ -48,6 +49,7 @@ int id btnInceptionTrailer 0x0
 int id btnInceptionTrailerTomorrow 0x0
 int id btnInterstellarBook 0x0
 int id btnInterstellarTrailer 0x0
+int id btnLogin 0x0
 int id btnMinus 0x0
 int id btnNachosMinus 0x0
 int id btnNachosPlus 0x0
@@ -58,11 +60,17 @@ int id btnProceedSnacks 0x0
 int id btnSendTicket 0x0
 int id btnShawshankBook 0x0
 int id btnShawshankTrailer 0x0
+int id btnSignUp 0x0
 int id btnToday 0x0
 int id btnTomorrow 0x0
 int id btnTrailer 0x0
 int id btnWatchTrailer 0x0
 int id buttonGetStarted 0x0
+int id cbRememberMe 0x0
+int id etConfirmPassword 0x0
+int id etEmail 0x0
+int id etName 0x0
+int id etPassword 0x0
 int id fragment_container 0x0
 int id gridSeats 0x0
 int id headerLayout 0x0
@@ -121,6 +129,7 @@ int id tvNachosQty 0x0
 int id tvPopcornPrice 0x0
 int id tvPopcornQty 0x0
 int id tvQuantity 0x0
+int id tvRegister 0x0
 int id tvSeatCount 0x0
 int id tvSelectedCount 0x0
 int id tvSelectedDateLabel 0x0
@@ -141,9 +150,11 @@ int id tvTotalPrice 0x0
 int id viewPager 0x0
 int id view_last_booking 0x0
 int layout activity_home 0x0
+int layout activity_login 0x0
 int layout activity_main 0x0
 int layout activity_onboarding 0x0
 int layout activity_seat_selection 0x0
+int layout activity_signup 0x0
 int layout activity_snacks 0x0
 int layout activity_splash 0x0
 int layout activity_ticket_summary 0x0
