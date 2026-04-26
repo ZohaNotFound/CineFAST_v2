@@ -156,6 +156,12 @@ int layout item_movie 0x0
 int layout item_snack 0x0
 int menu home_menu 0x0
 int string app_name 0x0
+int string gcm_defaultSenderId 0x0
+int string google_api_key 0x0
+int string google_app_id 0x0
+int string google_crash_reporting_api_key 0x0
+int string google_storage_bucket 0x0
+int string project_id 0x0
 int style Base_Theme_Cine 0x0
 int style Theme_Cine 0x0
 int xml backup_rules 0x0

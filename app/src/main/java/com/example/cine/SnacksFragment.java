@@ -19,6 +19,7 @@ public class SnacksFragment extends Fragment {
     private Button btnGoToSummary;
     private ArrayList<Snack> snackList;
     private SnackAdapter adapter;
+    private DatabaseHelper dbHelper;
 
     private Movie movie;
     private int seatCount;
@@ -35,11 +36,14 @@ public class SnacksFragment extends Fragment {
             ticketTotal = getArguments().getFloat("TICKET_TOTAL");
         }
 
+        dbHelper = new DatabaseHelper(getContext());
+
         snacksListView = view.findViewById(R.id.snacksListView);
         tvSnacksTotal = view.findViewById(R.id.tvSnacksTotal);
         btnGoToSummary = view.findViewById(R.id.btnGoToSummary);
 
-        prepareSnackData();
+        // Step 2: Load snacks from database instead of hardcoding
+        snackList = dbHelper.getAllSnacks();
 
         adapter = new SnackAdapter(getContext(), snackList, this::updateTotal);
         snacksListView.setAdapter(adapter);
@@ -52,7 +56,6 @@ public class SnacksFragment extends Fragment {
             bundle.putFloat("TICKET_TOTAL", ticketTotal);
             bundle.putFloat("SNACKS_TOTAL", calculateTotal());
             
-            // Generate snacks description
             StringBuilder details = new StringBuilder();
             for (Snack s : snackList) {
                 if (s.getQuantity() > 0) {
@@ -68,14 +71,6 @@ public class SnacksFragment extends Fragment {
         });
 
         return view;
-    }
-
-    private void prepareSnackData() {
-        snackList = new ArrayList<>();
-        snackList.add(new Snack("Popcorn", 9.0f, R.drawable.popcorn));
-        snackList.add(new Snack("Nachos", 8.0f, R.drawable.nachos));
-        snackList.add(new Snack("Drink", 6.0f, R.drawable.drink));
-        snackList.add(new Snack("Candy", 7.0f, R.drawable.candy));
     }
 
     private void updateTotal() {
