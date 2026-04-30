@@ -1,6 +1,7 @@
 package com.example.cine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -16,11 +19,14 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private static final String PREF_NAME = "cinefast_session_pref_v3";
+    private static final String KEY_IS_LOGGED_IN = "isLoggedIn";
 
     @Nullable
     @Override
@@ -47,14 +53,37 @@ public class HomeFragment extends Fragment {
     private void showPopupMenu(View view) {
         PopupMenu popup = new PopupMenu(requireContext(), view);
         popup.getMenu().add("View Last Booking");
+        popup.getMenu().add("Logout");
         popup.setOnMenuItemClickListener(item -> {
             if (item.getTitle().equals("View Last Booking")) {
                 showLastBookingDialog();
+                return true;
+            } else if (item.getTitle().equals("Logout")) {
+                logoutUser();
                 return true;
             }
             return false;
         });
         popup.show();
+    }
+
+    private void logoutUser() {
+        // Clear Firebase session
+        FirebaseAuth.getInstance().signOut();
+
+        // Clear SharedPreferences session
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+
+        Toast.makeText(getContext(), "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+        // Redirect to LoginActivity
+        Intent intent = new Intent(requireActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        requireActivity().finish();
     }
 
     private void showLastBookingDialog() {

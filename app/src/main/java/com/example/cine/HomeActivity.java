@@ -3,12 +3,16 @@ package com.example.cine;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,6 +42,65 @@ public class HomeActivity extends AppCompatActivity {
 
         setupBookButtons();
         setupTrailerButtons();
+
+        // Firestore Operations
+        saveMovieToFirestore();
+        fetchMoviesOnce();
+        listenToMoviesRealtime();
+    }
+
+    private void saveMovieToFirestore() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Movie movie = new Movie(
+                "Interstellar",
+                "Sci-Fi",
+                "2014",
+                9.2
+        );
+
+        db.collection("movies")
+                .document("interstellar_2014")   // custom ID
+                .set(movie)
+                .addOnSuccessListener(unused ->
+                        Log.d("FIRESTORE", "✅ Movie saved with custom ID!")
+                )
+                .addOnFailureListener(e ->
+                        Log.e("FIRESTORE", "❌ Error saving movie: " + e.getMessage())
+                );
+    }
+
+    private void fetchMoviesOnce() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("movies")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                            Movie m = doc.toObject(Movie.class);
+                            Log.d("FIRESTORE", "Fetch: " + m.title + " — " + m.rating);
+                        }
+                    } else {
+                        Log.e("FIRESTORE", "Error fetching documents: ", task.getException());
+                    }
+                });
+    }
+
+    private void listenToMoviesRealtime() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("movies")
+                .addSnapshotListener((snapshots, error) -> {
+                    if (error != null) {
+                        Log.e("FIRESTORE", "Listen failed: " + error.getMessage());
+                        return;
+                    }
+
+                    if (snapshots != null) {
+                        for (QueryDocumentSnapshot doc : snapshots) {
+                            Log.d("FIRESTORE", "Live: " + doc.getString("title"));
+                        }
+                    }
+                });
     }
 
     private void showToday() {

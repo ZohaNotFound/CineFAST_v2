@@ -27,69 +27,69 @@
 18-->[androidx.core:core:1.16.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\1ea86aeefa0ae4a97c0e7d76ec133001\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
 19
 20    <application
-20-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:4:5-39:19
+20-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:5:5-40:19
 21        android:allowBackup="true"
-21-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:5:9-35
+21-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:6:9-35
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 22-->[androidx.core:core:1.16.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\1ea86aeefa0ae4a97c0e7d76ec133001\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 23        android:debuggable="true"
 24        android:extractNativeLibs="false"
 25        android:icon="@drawable/logo"
-25-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:6:9-38
+25-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:7:9-38
 26        android:label="@string/app_name"
-26-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:7:9-41
+26-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:8:9-41
 27        android:roundIcon="@drawable/logo"
-27-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:8:9-43
+27-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:9:9-43
 28        android:supportsRtl="true"
-28-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:9:9-35
+28-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:10:9-35
 29        android:testOnly="true"
 30        android:theme="@style/Theme.Cine" >
-30-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:10:9-42
+30-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:11:9-42
 31
 32        <!-- SplashActivity is the entry point -->
 33        <activity
-33-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:13:9-20:20
+33-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:14:9-21:20
 34            android:name="com.example.cine.SplashActivity"
-34-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:14:13-43
+34-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:15:13-43
 35            android:exported="true" >
-35-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:15:13-36
+35-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:16:13-36
 36            <intent-filter>
-36-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:16:13-19:29
+36-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:17:13-20:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:17:17-69
-37-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:17:25-66
+37-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:18:17-69
+37-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:18:25-66
 38
 39                <category android:name="android.intent.category.LAUNCHER" />
-39-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:18:17-77
-39-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:18:27-74
+39-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:19:17-77
+39-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:19:27-74
 40            </intent-filter>
 41        </activity>
 42        <activity
-42-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:22:9-24:40
+42-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:23:9-25:40
 43            android:name="com.example.cine.OnboardingActivity"
-43-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:23:13-47
+43-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:24:13-47
 44            android:exported="false" />
-44-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:24:13-37
+44-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:25:13-37
 45        <activity
-45-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:26:9-28:40
+45-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:27:9-29:40
 46            android:name="com.example.cine.LoginActivity"
-46-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:27:13-42
+46-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:28:13-42
 47            android:exported="false" />
-47-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:28:13-37
+47-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:29:13-37
 48        <activity
-48-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:30:9-32:40
+48-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:31:9-33:40
 49            android:name="com.example.cine.SignupActivity"
-49-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:31:13-43
+49-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:32:13-43
 50            android:exported="false" />
-50-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:32:13-37
+50-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:33:13-37
 51
 52        <!-- MainActivity hosts all fragments -->
 53        <activity
-53-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:35:9-37:40
+53-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:36:9-38:40
 54            android:name="com.example.cine.MainActivity"
-54-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:36:13-41
+54-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:37:13-41
 55            android:exported="false" />
-55-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:37:13-37
+55-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:38:13-37
 56        <activity
 56-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\03627e48f73c1972c5646cc9a03c5fde\workspace\transformed\firebase-auth-22.3.0\AndroidManifest.xml:29:9-46:20
 57            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
