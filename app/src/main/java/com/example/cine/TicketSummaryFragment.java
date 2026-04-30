@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -23,14 +24,15 @@ import java.util.Map;
 
 public class TicketSummaryFragment extends Fragment {
 
-    private TextView tvMovie, tvSeats, tvTicketsPrice, tvSnacksPrice, tvSnacksDetails, tvGrandTotal;
+    private TextView tvMovie, tvSeats, tvTicketsPrice, tvSnacksPrice, tvSnacksDetails, tvGrandTotal, tvSummaryDateTime;
     private Button btnFinish, btnSendTicket;
+    private ImageButton btnBack;
 
     private Movie movie;
     private int seatCount;
     private float ticketTotal;
     private float snacksTotal;
-    private String snacksDetails;
+    private String snacksDetails, selectedDate, selectedTime;
 
     @Nullable
     @Override
@@ -39,6 +41,8 @@ public class TicketSummaryFragment extends Fragment {
 
         if (getArguments() != null) {
             movie = (Movie) getArguments().getSerializable("MOVIE");
+            selectedDate = getArguments().getString("SELECTED_DATE");
+            selectedTime = getArguments().getString("SELECTED_TIME");
             seatCount = getArguments().getInt("SEAT_COUNT");
             ticketTotal = getArguments().getFloat("TICKET_TOTAL");
             snacksTotal = getArguments().getFloat("SNACKS_TOTAL");
@@ -46,6 +50,7 @@ public class TicketSummaryFragment extends Fragment {
         }
 
         tvMovie = view.findViewById(R.id.tvSummaryMovie);
+        tvSummaryDateTime = view.findViewById(R.id.tvSummaryDateTime);
         tvSeats = view.findViewById(R.id.tvSummarySeats);
         tvTicketsPrice = view.findViewById(R.id.tvSummaryTicketsPrice);
         tvSnacksPrice = view.findViewById(R.id.tvSummarySnacksPrice);
@@ -53,9 +58,17 @@ public class TicketSummaryFragment extends Fragment {
         tvGrandTotal = view.findViewById(R.id.tvSummaryGrandTotal);
         btnFinish = view.findViewById(R.id.btnFinish);
         btnSendTicket = view.findViewById(R.id.btnSendTicket);
+        btnBack = view.findViewById(R.id.btnBack);
+
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
+        }
 
         if (movie != null) {
             tvMovie.setText("Movie: " + movie.getTitle());
+            if (tvSummaryDateTime != null) {
+                tvSummaryDateTime.setText(selectedDate + " | " + (selectedTime != null ? selectedTime : "N/A"));
+            }
             tvSeats.setText("Seats: " + seatCount);
             tvTicketsPrice.setText(String.format("Tickets: $%.2f", ticketTotal));
             tvSnacksPrice.setText(String.format("Snacks: $%.2f", snacksTotal));
@@ -64,10 +77,7 @@ public class TicketSummaryFragment extends Fragment {
             float grandTotal = ticketTotal + snacksTotal;
             tvGrandTotal.setText(String.format("Grand Total: $%.2f", grandTotal));
 
-            // Save locally for the "Last Booking" feature
             saveBookingToPrefs(movie.getTitle(), seatCount, grandTotal);
-            
-            // Save to Firebase for the "Ticket History" feature
             saveBookingToFirebase(movie.getTitle(), seatCount, grandTotal);
         }
 
@@ -77,6 +87,7 @@ public class TicketSummaryFragment extends Fragment {
 
         btnSendTicket.setOnClickListener(v -> {
             String shareText = "Movie: " + movie.getTitle() + "\n" +
+                    "Date: " + selectedDate + " | Time: " + selectedTime + "\n" +
                     "Seats: " + seatCount + "\n" +
                     "Snacks: " + (snacksDetails != null ? snacksDetails : "None") + "\n" +
                     "Grand Total: $" + (ticketTotal + snacksTotal);
@@ -108,6 +119,8 @@ public class TicketSummaryFragment extends Fragment {
         Map<String, Object> booking = new HashMap<>();
         booking.put("userId", uid);
         booking.put("movieTitle", movieName);
+        booking.put("date", selectedDate);
+        booking.put("time", selectedTime);
         booking.put("seats", seats);
         booking.put("totalAmount", totalPrice);
         booking.put("timestamp", System.currentTimeMillis());

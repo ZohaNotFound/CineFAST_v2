@@ -100,11 +100,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 tvTime.setText(time);
                 
                 tvTime.setOnClickListener(v -> {
-                    // Visual feedback for selection
-                    for(int i=0; i<holder.layoutShowtimes.getChildCount(); i++){
-                        holder.layoutShowtimes.getChildAt(i).setSelected(false);
+                    // When a specific time is clicked, move to booking immediately
+                    if (listener != null) {
+                        listener.onBookSeats(movie, time);
                     }
-                    v.setSelected(true);
                 });
 
                 holder.layoutShowtimes.addView(timeView);

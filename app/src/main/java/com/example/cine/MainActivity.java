@@ -102,7 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_home) {
             replaceFragment(new HomeFragment());
         } else if (id == R.id.nav_bookings) {
-            Toast.makeText(this, "My Bookings clicked", Toast.LENGTH_SHORT).show();
+            replaceFragment(new MyBookingsFragment());
+        } else if (id == R.id.nav_account) {
+            replaceFragment(new AccountFragment());
         } else if (id == R.id.nav_logout) {
             logoutUser();
         }
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 

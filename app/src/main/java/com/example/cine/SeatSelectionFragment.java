@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -20,8 +21,9 @@ import java.util.List;
 
 public class SeatSelectionFragment extends Fragment {
 
-    private TextView tvMovieName, tvSelectedCount, tvTotalPrice, tvSelectedDateTime;
+    private TextView tvMovieName, tvSelectedCount, tvTotalPrice, tvSelectedDate, tvSelectedTime;
     private Button btnProceedSnacks, btnBookSeats, btnWatchTrailer;
+    private ImageButton btnBack;
     private View layoutNowShowing, layoutComingSoon;
     private GridLayout gridSeats;
 
@@ -56,19 +58,24 @@ public class SeatSelectionFragment extends Fragment {
         tvMovieName = view.findViewById(R.id.tvMovieName);
         tvSelectedCount = view.findViewById(R.id.tvSelectedCount);
         tvTotalPrice = view.findViewById(R.id.tvTotalPrice);
-        tvSelectedDateTime = view.findViewById(R.id.tvSelectedDateTime); // You'll need to add this to XML
+        tvSelectedDate = view.findViewById(R.id.tvSelectedDate);
+        tvSelectedTime = view.findViewById(R.id.tvSelectedTime);
         btnProceedSnacks = view.findViewById(R.id.btnProceedSnacks);
         btnBookSeats = view.findViewById(R.id.btnBookSeats);
         btnWatchTrailer = view.findViewById(R.id.btnWatchTrailer);
+        btnBack = view.findViewById(R.id.btnBack);
         gridSeats = view.findViewById(R.id.gridSeats);
         layoutNowShowing = view.findViewById(R.id.layoutNowShowingButtons);
         layoutComingSoon = view.findViewById(R.id.layoutComingSoonButtons);
 
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
+        }
+
         if (movie != null) {
             tvMovieName.setText(movie.getTitle());
-            if (tvSelectedDateTime != null) {
-                tvSelectedDateTime.setText(selectedDate + " | " + (selectedTime != null ? selectedTime : "N/A"));
-            }
+            if (tvSelectedDate != null) tvSelectedDate.setText(selectedDate);
+            if (tvSelectedTime != null) tvSelectedTime.setText(selectedTime != null ? selectedTime : "N/A");
 
             if (movie.isNowPlaying()) {
                 layoutNowShowing.setVisibility(View.VISIBLE);
@@ -108,9 +115,11 @@ public class SeatSelectionFragment extends Fragment {
         });
 
         btnWatchTrailer.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.youtube.com/results?search_query=" + movie.getTitle() + " trailer"));
-            startActivity(intent);
+            String url = movie.getTrailerUrl();
+            if (url != null && !url.isEmpty()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
         });
 
         return view;

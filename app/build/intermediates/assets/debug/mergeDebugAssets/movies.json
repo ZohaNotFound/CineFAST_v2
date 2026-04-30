@@ -6,7 +6,12 @@
     "year": 2014,
     "rating": 9.2,
     "poster": "interstellar",
-    "nowPlaying": true
+    "trailerUrl": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+    "nowPlaying": true,
+    "showtimes": {
+      "today": ["10:00 AM", "1:30 PM", "5:00 PM", "9:00 PM"],
+      "tomorrow": ["11:00 AM", "2:30 PM", "6:00 PM", "8:30 PM"]
+    }
   },
   {
     "title": "Inception",
@@ -15,7 +20,12 @@
     "year": 2010,
     "rating": 8.8,
     "poster": "inception",
-    "nowPlaying": true
+    "trailerUrl": "https://www.youtube.com/watch?v=YoHD9XEInc0",
+    "nowPlaying": true,
+    "showtimes": {
+      "today": ["12:00 PM", "3:30 PM", "7:00 PM"],
+      "tomorrow": ["1:00 PM", "4:30 PM", "8:00 PM"]
+    }
   },
   {
     "title": "The Dark Knight",
@@ -24,7 +34,12 @@
     "year": 2008,
     "rating": 9.0,
     "poster": "dark_knight",
-    "nowPlaying": true
+    "trailerUrl": "https://www.youtube.com/watch?v=EXeTwQWaywY",
+    "nowPlaying": true,
+    "showtimes": {
+      "today": ["11:00 AM", "2:30 PM", "6:00 PM", "10:00 PM"],
+      "tomorrow": ["10:30 AM", "1:30 PM", "5:30 PM", "9:30 PM"]
+    }
   },
   {
     "title": "Dune",
@@ -33,7 +48,9 @@
     "year": 2021,
     "rating": 8.0,
     "poster": "logo",
-    "nowPlaying": false
+    "trailerUrl": "https://www.youtube.com/watch?v=n9xhJrPXop4",
+    "nowPlaying": false,
+    "showtimes": {}
   },
   {
     "title": "Shawshank Redemption",
@@ -42,7 +59,9 @@
     "year": 1994,
     "rating": 9.3,
     "poster": "shawshank",
-    "nowPlaying": false
+    "trailerUrl": "https://www.youtube.com/watch?v=6hB3S9bIaco",
+    "nowPlaying": false,
+    "showtimes": {}
   },
   {
     "title": "Dora Explorer",
@@ -51,6 +70,8 @@
     "year": 2019,
     "rating": 6.1,
     "poster": "dora",
-    "nowPlaying": false
+    "trailerUrl": "https://www.youtube.com/watch?v=gUTtJjV852c",
+    "nowPlaying": false,
+    "showtimes": {}
   }
 ]

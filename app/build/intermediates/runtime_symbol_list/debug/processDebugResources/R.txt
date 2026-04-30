@@ -3712,6 +3712,7 @@ int drawable notify_panel_notification_icon_bg 0x7f070107
 int drawable oppenheimer 0x7f070108
 int drawable plus 0x7f070109
 int drawable popcorn 0x7f07010a
+int drawable radio_selector 0x7f070111
 int drawable seat_available_bg 0x7f07010b
 int drawable shawshank 0x7f07010c
 int drawable test_level_drawable 0x7f07010d
@@ -4036,6 +4037,7 @@ int id labeled 0x7f08013b
 int id layout 0x7f08013c
 int id layoutComingSoonButtons 0x7f08013d
 int id layoutNowShowingButtons 0x7f08013e
+int id layoutShowtimes 0x7f08029e
 int id left 0x7f08013f
 int id leftToRight 0x7f080140
 int id legacy 0x7f080141
@@ -4178,11 +4180,14 @@ int id progress_circular 0x7f0801ca
 int id progress_horizontal 0x7f0801cb
 int id radio 0x7f0801cc
 int id ratio 0x7f0801cd
+int id rbToday 0x7f08029f
+int id rbTomorrow 0x7f0802a0
 int id rectangles 0x7f0801ce
 int id recyclerView 0x7f0801cf
 int id report_drawn 0x7f0801d0
 int id retreat 0x7f0801d1
 int id reverseSawtooth 0x7f0801d2
+int id rgDate 0x7f0802a1
 int id right 0x7f0801d3
 int id rightToLeft 0x7f0801d4
 int id right_icon 0x7f0801d5
@@ -4219,6 +4224,7 @@ int id shortcut 0x7f0801f3
 int id showCustom 0x7f0801f4
 int id showHome 0x7f0801f5
 int id showTitle 0x7f0801f6
+int id showtimesScroll 0x7f0802a2
 int id sin 0x7f0801f7
 int id skipCollapsed 0x7f0801f8
 int id skipped 0x7f0801f9
@@ -4341,13 +4347,19 @@ int id tvPopcornQty 0x7f08026d
 int id tvQuantity 0x7f08026e
 int id tvRegister 0x7f08026f
 int id tvSeatCount 0x7f080270
+int id tvSectionTitle 0x7f0802a3
+int id tvSelectDateLabel 0x7f0802a4
 int id tvSelectedCount 0x7f080271
+int id tvSelectedDate 0x7f0802a7
 int id tvSelectedDateLabel 0x7f080272
 int id tvSelectedSeats 0x7f080273
+int id tvSelectedTime 0x7f0802a8
 int id tvShawshankDetails 0x7f080274
 int id tvShawshankTitle 0x7f080275
+int id tvShowtime 0x7f0802a5
 int id tvSnacksDetails 0x7f080276
 int id tvSnacksTotal 0x7f080277
+int id tvSummaryDateTime 0x7f0802a9
 int id tvSummaryGrandTotal 0x7f080278
 int id tvSummaryMovie 0x7f080279
 int id tvSummarySeats 0x7f08027a
@@ -4539,6 +4551,7 @@ int layout fragment_ticket_summary 0x7f0b003b
 int layout ime_base_split_test_activity 0x7f0b003c
 int layout ime_secondary_split_test_activity 0x7f0b003d
 int layout item_movie 0x7f0b003e
+int layout item_showtime 0x7f0b0080
 int layout item_snack 0x7f0b003f
 int layout m3_alert_dialog 0x7f0b0040
 int layout m3_alert_dialog_actions 0x7f0b0041

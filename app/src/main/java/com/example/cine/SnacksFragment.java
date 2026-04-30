@@ -24,6 +24,7 @@ public class SnacksFragment extends Fragment {
     private Movie movie;
     private int seatCount;
     private float ticketTotal;
+    private String selectedDate, selectedTime;
 
     @Nullable
     @Override
@@ -32,6 +33,8 @@ public class SnacksFragment extends Fragment {
 
         if (getArguments() != null) {
             movie = (Movie) getArguments().getSerializable("MOVIE");
+            selectedDate = getArguments().getString("SELECTED_DATE");
+            selectedTime = getArguments().getString("SELECTED_TIME");
             seatCount = getArguments().getInt("SEAT_COUNT");
             ticketTotal = getArguments().getFloat("TICKET_TOTAL");
         }
@@ -42,16 +45,24 @@ public class SnacksFragment extends Fragment {
         tvSnacksTotal = view.findViewById(R.id.tvSnacksTotal);
         btnGoToSummary = view.findViewById(R.id.btnGoToSummary);
 
-        // Step 2: Load snacks from database instead of hardcoding
+        // Load snacks from database
         snackList = dbHelper.getAllSnacks();
 
         adapter = new SnackAdapter(getContext(), snackList, this::updateTotal);
         snacksListView.setAdapter(adapter);
 
+        // Back button
+        View btnBack = view.findViewById(R.id.btnBack);
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
+        }
+
         btnGoToSummary.setOnClickListener(v -> {
             TicketSummaryFragment fragment = new TicketSummaryFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("MOVIE", movie);
+            bundle.putString("SELECTED_DATE", selectedDate);
+            bundle.putString("SELECTED_TIME", selectedTime);
             bundle.putInt("SEAT_COUNT", seatCount);
             bundle.putFloat("TICKET_TOTAL", ticketTotal);
             bundle.putFloat("SNACKS_TOTAL", calculateTotal());
