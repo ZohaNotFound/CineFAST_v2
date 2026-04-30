@@ -3,12 +3,12 @@ package com.example.cine;
 import java.io.Serializable;
 
 public class Booking implements Serializable {
-    private String movieTitle;
-    private String date;
-    private String time;
-    private int seats;
-    private double totalAmount;
-    private long timestamp;
+    public String movieTitle;
+    public String date;
+    public String time;
+    public int seats;
+    public double totalAmount;
+    public long timestamp;
 
     public Booking() {}
 
