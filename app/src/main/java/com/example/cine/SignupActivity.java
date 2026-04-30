@@ -67,29 +67,31 @@ public class SignupActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String uid = mAuth.getCurrentUser().getUid();
-                        
-                        // Step 1: Prepare User Data
+                        Log.d("SIGNUP", "Auth success. UID: " + uid);
+
                         Map<String, Object> user = new HashMap<>();
                         user.put("name", name);
                         user.put("email", email);
                         user.put("createdAt", System.currentTimeMillis());
 
-                        // Step 2: Store in Firestore using UID as Document ID
+                        Log.d("SIGNUP", "Attempting Firestore write to users/" + uid);
+
                         db.collection("users")
                                 .document(uid)
                                 .set(user)
                                 .addOnSuccessListener(unused -> {
-                                    Log.d("USER", "User data saved to Firestore");
+                                    Log.d("SIGNUP", "✅ Firestore write SUCCESS");
                                     Toast.makeText(SignupActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                     finish();
                                 })
                                 .addOnFailureListener(e -> {
-                                    Log.e("USER", "Error saving user", e);
-                                    Toast.makeText(SignupActivity.this, "Database Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Log.e("SIGNUP", "❌ Firestore write FAILED: " + e.getMessage());
+                                    Toast.makeText(SignupActivity.this, "DB Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
                                 });
                     } else {
-                        Toast.makeText(SignupActivity.this, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("SIGNUP", "❌ Auth FAILED: " + task.getException().getMessage());
+                        Toast.makeText(SignupActivity.this, "Auth Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }

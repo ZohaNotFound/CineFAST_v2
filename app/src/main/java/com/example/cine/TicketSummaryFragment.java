@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class TicketSummaryFragment extends Fragment {
 
@@ -57,7 +64,11 @@ public class TicketSummaryFragment extends Fragment {
             float grandTotal = ticketTotal + snacksTotal;
             tvGrandTotal.setText(String.format("Grand Total: $%.2f", grandTotal));
 
+            // Save locally for the "Last Booking" feature
             saveBookingToPrefs(movie.getTitle(), seatCount, grandTotal);
+            
+            // Save to Firebase for the "Ticket History" feature
+            saveBookingToFirebase(movie.getTitle(), seatCount, grandTotal);
         }
 
         btnFinish.setOnClickListener(v -> {
@@ -86,7 +97,30 @@ public class TicketSummaryFragment extends Fragment {
         editor.putInt("last_seats", seats);
         editor.putFloat("last_price", totalPrice);
         editor.apply();
-        
-        Toast.makeText(getContext(), "Booking Saved Locally", Toast.LENGTH_SHORT).show();
+    }
+
+    private void saveBookingToFirebase(String movieName, int seats, float totalPrice) {
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) return;
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> booking = new HashMap<>();
+        booking.put("userId", uid);
+        booking.put("movieTitle", movieName);
+        booking.put("seats", seats);
+        booking.put("totalAmount", totalPrice);
+        booking.put("timestamp", System.currentTimeMillis());
+
+        db.collection("bookings")
+                .add(booking)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d("BOOKING", "Ticket saved to Firebase: " + documentReference.getId());
+                    Toast.makeText(getContext(), "Booking Confirmed & Saved!", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("BOOKING", "Error saving ticket", e);
+                    Toast.makeText(getContext(), "Error saving to cloud", Toast.LENGTH_SHORT).show();
+                });
     }
 }

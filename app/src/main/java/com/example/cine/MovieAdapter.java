@@ -1,6 +1,5 @@
 package com.example.cine;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -8,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,14 +17,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     private ArrayList<Movie> movies;
     private OnMovieClickListener listener;
+    private String selectedDate = "today"; // default
 
     public interface OnMovieClickListener {
-        void onBookSeats(Movie movie);
+        void onBookSeats(Movie movie, String selectedTime);
     }
 
     public MovieAdapter(ArrayList<Movie> movies, OnMovieClickListener listener) {
         this.movies = movies;
         this.listener = listener;
+    }
+
+    public void updateDate(String date) {
+        this.selectedDate = date.toLowerCase();
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -39,19 +45,71 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Movie movie = movies.get(position);
         holder.movieTitle.setText(movie.getTitle());
         holder.movieDetails.setText(movie.getGenre() + " / " + movie.getDuration());
-        holder.moviePoster.setImageResource(movie.getImageResId());
+
+        // Load poster by name
+        int resId = holder.itemView.getContext().getResources().getIdentifier(
+                movie.getPoster(), "drawable", holder.itemView.getContext().getPackageName());
+        holder.moviePoster.setImageResource(resId != 0 ? resId : R.drawable.logo);
+
+        // Handle Coming Soon state
+        if (!movie.isNowPlaying()) {
+            holder.btnBook.setEnabled(false);
+            holder.btnBook.setAlpha(0.5f);
+            holder.layoutShowtimes.setVisibility(View.GONE);
+        } else {
+            holder.btnBook.setEnabled(true);
+            holder.btnBook.setAlpha(1.0f);
+            holder.layoutShowtimes.setVisibility(View.VISIBLE);
+            setupShowtimes(holder, movie);
+        }
 
         holder.btnBook.setOnClickListener(v -> {
             if (listener != null) {
-                listener.onBookSeats(movie);
+                String time = null;
+                if (movie.getShowtimes().containsKey(selectedDate)) {
+                    ArrayList<String> times = movie.getShowtimes().get(selectedDate);
+                    if (!times.isEmpty()) time = times.get(0);
+                }
+                listener.onBookSeats(movie, time);
             }
         });
 
         holder.btnTrailer.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://www.youtube.com/results?search_query=" + movie.getTitle() + " trailer"));
-            holder.itemView.getContext().startActivity(intent);
+            String url = movie.getTrailerUrl();
+            if (url != null && !url.isEmpty()) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                holder.itemView.getContext().startActivity(intent);
+            } else {
+                // Fallback if URL is missing
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.youtube.com/results?search_query=" + movie.getTitle() + " trailer"));
+                holder.itemView.getContext().startActivity(intent);
+            }
         });
+    }
+
+    private void setupShowtimes(MovieViewHolder holder, Movie movie) {
+        holder.layoutShowtimes.removeAllViews();
+        ArrayList<String> times = movie.getShowtimes().get(selectedDate);
+
+        if (times != null) {
+            for (String time : times) {
+                View timeView = LayoutInflater.from(holder.itemView.getContext())
+                        .inflate(R.layout.item_showtime, holder.layoutShowtimes, false);
+                TextView tvTime = timeView.findViewById(R.id.tvShowtime);
+                tvTime.setText(time);
+                
+                tvTime.setOnClickListener(v -> {
+                    // Visual feedback for selection
+                    for(int i=0; i<holder.layoutShowtimes.getChildCount(); i++){
+                        holder.layoutShowtimes.getChildAt(i).setSelected(false);
+                    }
+                    v.setSelected(true);
+                });
+
+                holder.layoutShowtimes.addView(timeView);
+            }
+        }
     }
 
     @Override
@@ -61,6 +119,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         ImageView moviePoster;
         TextView movieTitle, movieDetails;
         Button btnTrailer, btnBook;
+        LinearLayout layoutShowtimes;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +128,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             movieDetails = itemView.findViewById(R.id.movieDetails);
             btnTrailer = itemView.findViewById(R.id.btnTrailer);
             btnBook = itemView.findViewById(R.id.btnBook);
+            layoutShowtimes = itemView.findViewById(R.id.layoutShowtimes);
         }
     }
 }

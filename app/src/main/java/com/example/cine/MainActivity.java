@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         // Setup the "Hamburger" icon
-        // These strings are now defined in res/values/strings.xml
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 } else {
-                    // Disable this callback and call onBackPressed to perform default action
                     setEnabled(false);
                     getOnBackPressedDispatcher().onBackPressed();
                     setEnabled(true);
@@ -77,17 +76,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void updateNavHeader() {
         View headerView = navigationView.getHeaderView(0);
         TextView tvName = headerView.findViewById(R.id.nav_header_name);
-        TextView tvEmail = headerView.findViewById(R.id.nav_header_email);
 
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
             FirebaseFirestore.getInstance().collection("users").document(uid).get()
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
-                            tvName.setText(documentSnapshot.getString("name"));
-                            tvEmail.setText(documentSnapshot.getString("email"));
+                            String name = documentSnapshot.getString("name");
+                            tvName.setText(name != null ? name : getString(R.string.unknown_user));
+                        } else {
+                            tvName.setText(R.string.unknown_user);
                         }
-                    });
+                    })
+                    .addOnFailureListener(e -> tvName.setText(R.string.unknown_user));
+        } else {
+            tvName.setText(R.string.unknown_user);
         }
     }
 
@@ -98,7 +102,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_home) {
             replaceFragment(new HomeFragment());
         } else if (id == R.id.nav_bookings) {
-            // Placeholder: Replace with MyBookingsFragment when created
             Toast.makeText(this, "My Bookings clicked", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_logout) {
             logoutUser();

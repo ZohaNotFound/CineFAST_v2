@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComingSoonFragment extends Fragment {
 
@@ -21,12 +22,18 @@ public class ComingSoonFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ArrayList<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Doremon Adventure", "Animation", "90 min", R.drawable.doremon, true));
-        movies.add(new Movie("Dora Explorer", "Adventure", "85 min", R.drawable.dora, true));
-        movies.add(new Movie("Shawshank", "Drama", "142 min", R.drawable.shawshank, true));
+        // Load ALL movies from JSON
+        List<Movie> allMovies = MovieRepository.getMovies(requireContext());
+        
+        // Filter to coming soon only
+        ArrayList<Movie> comingSoon = new ArrayList<>();
+        for (Movie m : allMovies) {
+            if (!m.isNowPlaying()) {
+                comingSoon.add(m);
+            }
+        }
 
-        recyclerView.setAdapter(new MovieAdapter(movies, movie -> {
+        recyclerView.setAdapter(new MovieAdapter(comingSoon, movie -> {
             SeatSelectionFragment fragment = new SeatSelectionFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("MOVIE", movie);

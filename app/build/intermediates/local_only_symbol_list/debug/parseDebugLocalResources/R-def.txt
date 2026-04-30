@@ -4,6 +4,7 @@ anim fade_in
 color black
 color purple_primary
 color white
+drawable back
 drawable bg
 drawable bg1
 drawable bg_image
@@ -97,7 +98,6 @@ id movieDetails
 id moviePoster
 id movieTitle
 id nav_bookings
-id nav_header_email
 id nav_header_logo
 id nav_header_name
 id nav_home
@@ -188,6 +188,7 @@ string google_storage_bucket
 string navigation_drawer_close
 string navigation_drawer_open
 string project_id
+string unknown_user
 style Base.Theme.Cine
 style Theme.Cine
 xml backup_rules

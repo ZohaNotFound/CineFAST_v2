@@ -12,6 +12,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="project_id" translatable="false">cinefast-d0480</string>
+    <string name="unknown_user">Unknown</string>
     <style name="Base.Theme.Cine" parent="Theme.Material3.DayNight.NoActionBar">
         
         

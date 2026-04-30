@@ -40,6 +40,10 @@
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-42:\\drawable\\dark_knight.png"
     },
     {
+        "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\drawable_back.png.flat",
+        "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-42:\\drawable\\back.png"
+    },
+    {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\drawable_bg.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-42:\\drawable\\bg.png"
     },
@@ -66,10 +70,6 @@
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\drawable_nachos.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-42:\\drawable\\nachos.png"
-    },
-    {
-        "merged": "com.example.cine.app-debug-40:/menu_drawer_menu.xml.flat",
-        "source": "com.example.cine.app-main-42:/menu/drawer_menu.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\layout_fragment_ticket_summary.xml.flat",
@@ -118,6 +118,10 @@
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\drawable_popcorn.png.flat",
         "source": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-main-42:\\drawable\\popcorn.png"
+    },
+    {
+        "merged": "com.example.cine.app-debug-40:/layout_activity_signup.xml.flat",
+        "source": "com.example.cine.app-main-42:/layout/activity_signup.xml"
     },
     {
         "merged": "C:\\Users\\ZT\\.gradle\\daemon\\9.2.1\\com.example.cine.app-debug-40:\\menu_drawer_menu.xml.flat",

@@ -28,8 +28,6 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Cine" >
-
-        <!-- SplashActivity is the entry point -->
         <activity
             android:name="com.example.cine.SplashActivity"
             android:exported="true" >
@@ -48,8 +46,6 @@
         <activity
             android:name="com.example.cine.SignupActivity"
             android:exported="false" />
-
-        <!-- MainActivity hosts all fragments -->
         <activity
             android:name="com.example.cine.MainActivity"
             android:exported="false" />

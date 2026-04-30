@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -10,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cine">
 
-        <!-- SplashActivity is the entry point -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -32,7 +32,6 @@
             android:name=".SignupActivity"
             android:exported="false" />
 
-        <!-- MainActivity hosts all fragments -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />

@@ -20,12 +20,13 @@ import java.util.List;
 
 public class SeatSelectionFragment extends Fragment {
 
-    private TextView tvMovieName, tvSelectedCount, tvTotalPrice;
+    private TextView tvMovieName, tvSelectedCount, tvTotalPrice, tvSelectedDateTime;
     private Button btnProceedSnacks, btnBookSeats, btnWatchTrailer;
     private View layoutNowShowing, layoutComingSoon;
     private GridLayout gridSeats;
 
     private Movie movie;
+    private String selectedDate, selectedTime;
     private List<Seat> seatList = new ArrayList<>();
     private List<Seat> selectedSeats = new ArrayList<>();
     private final int PRICE_PER_SEAT = 10;
@@ -48,11 +49,14 @@ public class SeatSelectionFragment extends Fragment {
 
         if (getArguments() != null) {
             movie = (Movie) getArguments().getSerializable("MOVIE");
+            selectedDate = getArguments().getString("SELECTED_DATE");
+            selectedTime = getArguments().getString("SELECTED_TIME");
         }
 
         tvMovieName = view.findViewById(R.id.tvMovieName);
         tvSelectedCount = view.findViewById(R.id.tvSelectedCount);
         tvTotalPrice = view.findViewById(R.id.tvTotalPrice);
+        tvSelectedDateTime = view.findViewById(R.id.tvSelectedDateTime); // You'll need to add this to XML
         btnProceedSnacks = view.findViewById(R.id.btnProceedSnacks);
         btnBookSeats = view.findViewById(R.id.btnBookSeats);
         btnWatchTrailer = view.findViewById(R.id.btnWatchTrailer);
@@ -62,12 +66,16 @@ public class SeatSelectionFragment extends Fragment {
 
         if (movie != null) {
             tvMovieName.setText(movie.getTitle());
-            if (movie.isComingSoon()) {
-                layoutNowShowing.setVisibility(View.GONE);
-                layoutComingSoon.setVisibility(View.VISIBLE);
-            } else {
+            if (tvSelectedDateTime != null) {
+                tvSelectedDateTime.setText(selectedDate + " | " + (selectedTime != null ? selectedTime : "N/A"));
+            }
+
+            if (movie.isNowPlaying()) {
                 layoutNowShowing.setVisibility(View.VISIBLE);
                 layoutComingSoon.setVisibility(View.GONE);
+            } else {
+                layoutNowShowing.setVisibility(View.GONE);
+                layoutComingSoon.setVisibility(View.VISIBLE);
             }
         }
 
@@ -78,6 +86,8 @@ public class SeatSelectionFragment extends Fragment {
             SnacksFragment fragment = new SnacksFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("MOVIE", movie);
+            bundle.putString("SELECTED_DATE", selectedDate);
+            bundle.putString("SELECTED_TIME", selectedTime);
             bundle.putInt("SEAT_COUNT", selectedSeats.size());
             bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
             fragment.setArguments(bundle);
@@ -85,10 +95,11 @@ public class SeatSelectionFragment extends Fragment {
         });
 
         btnBookSeats.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Booking Confirmed!", Toast.LENGTH_SHORT).show();
             TicketSummaryFragment fragment = new TicketSummaryFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("MOVIE", movie);
+            bundle.putString("SELECTED_DATE", selectedDate);
+            bundle.putString("SELECTED_TIME", selectedTime);
             bundle.putInt("SEAT_COUNT", selectedSeats.size());
             bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
             bundle.putFloat("SNACKS_TOTAL", 0f);
@@ -136,7 +147,7 @@ public class SeatSelectionFragment extends Fragment {
                 params.setMargins(6, 6, 6, 6);
                 btn.setLayoutParams(params);
 
-                if (movie != null && !movie.isComingSoon()) {
+                if (movie != null && movie.isNowPlaying()) {
                     btn.setOnClickListener(v -> {
                         Seat clickedSeat = (Seat) v.getTag();
                         if (clickedSeat.state == 2) return;
@@ -153,6 +164,7 @@ public class SeatSelectionFragment extends Fragment {
                     });
                 } else {
                     btn.setEnabled(false);
+                    btn.setAlpha(0.5f);
                 }
 
                 gridSeats.addView(btn);
@@ -177,7 +189,7 @@ public class SeatSelectionFragment extends Fragment {
         }
         btn.setBackgroundTintList(ColorStateList.valueOf(color));
         if (seat.state == 0) {
-            btn.setBackgroundResource(R.drawable.seat_available_bg); // We need a stroke drawable
+            btn.setBackgroundResource(R.drawable.seat_available_bg);
         }
     }
 

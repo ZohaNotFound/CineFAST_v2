@@ -15,15 +15,18 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
     private Button btnToday, btnTomorrow;
     private LinearLayout todayMovies, tomorrowMovies;
     private String selectedDate = "Today";
-    private String displayDate, displayTime = "22:15"; //
+    private String displayDate, displayTime = "22:15";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,9 @@ public class HomeActivity extends AppCompatActivity {
         btnToday.setOnClickListener(v -> showToday());
         btnTomorrow.setOnClickListener(v -> showTomorrow());
 
-        setupBookButtons();
-        setupTrailerButtons();
+        // Note: Hardcoded button setups are removed as we move to a dynamic JSON-based system.
+        // setupBookButtons();
+        // setupTrailerButtons();
 
         // Firestore Operations
         saveMovieToFirestore();
@@ -52,15 +56,26 @@ public class HomeActivity extends AppCompatActivity {
     private void saveMovieToFirestore() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        Map<String, ArrayList<String>> showtimes = new HashMap<>();
+        ArrayList<String> todayTimes = new ArrayList<>();
+        todayTimes.add("10:00 AM");
+        showtimes.put("today", todayTimes);
+
+        // Updated to match the new Movie constructor (9 arguments)
         Movie movie = new Movie(
                 "Interstellar",
                 "Sci-Fi",
-                "2014",
-                9.2
+                "169 min",
+                2014,
+                9.2,
+                "interstellar",
+                "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+                true,
+                showtimes
         );
 
         db.collection("movies")
-                .document("interstellar_2014")   // custom ID
+                .document("interstellar_2014")
                 .set(movie)
                 .addOnSuccessListener(unused ->
                         Log.d("FIRESTORE", "✅ Movie saved with custom ID!")
@@ -107,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
         todayMovies.setVisibility(View.VISIBLE);
         tomorrowMovies.setVisibility(View.GONE);
         selectedDate = "Today";
-        displayDate = getFormattedDate(0); //
+        displayDate = getFormattedDate(0);
         btnToday.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_blue_dark));
         btnTomorrow.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
     }
@@ -116,7 +131,7 @@ public class HomeActivity extends AppCompatActivity {
         todayMovies.setVisibility(View.GONE);
         tomorrowMovies.setVisibility(View.VISIBLE);
         selectedDate = "Tomorrow";
-        displayDate = getFormattedDate(1); // tomorrow
+        displayDate = getFormattedDate(1);
         btnTomorrow.setBackgroundColor(ContextCompat.getColor(this, android.R.color.holo_blue_dark));
         btnToday.setBackgroundColor(ContextCompat.getColor(this, android.R.color.transparent));
     }
@@ -126,46 +141,6 @@ public class HomeActivity extends AppCompatActivity {
         calendar.add(Calendar.DAY_OF_YEAR, daysLater);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         return sdf.format(calendar.getTime());
-    }
-
-    private void setupBookButtons() {
-        findViewById(R.id.btnDarkKnightBook).setOnClickListener(v ->
-                openSeatSelection("The Dark Knight"));
-        findViewById(R.id.btnInceptionBook).setOnClickListener(v ->
-                openSeatSelection("Inception"));
-        findViewById(R.id.btnInterstellarBook).setOnClickListener(v ->
-                openSeatSelection("Interstellar"));
-        findViewById(R.id.btnShawshankBook).setOnClickListener(v ->
-                openSeatSelection("The Shawshank Redemption"));
-
-        findViewById(R.id.btnDoremonBook).setOnClickListener(v ->
-                openSeatSelection("Doremon Adventure"));
-        findViewById(R.id.btnDoraBook).setOnClickListener(v ->
-                openSeatSelection("Dora Explorer"));
-        findViewById(R.id.btnDarkKnightBookTomorrow).setOnClickListener(v ->
-                openSeatSelection("The Dark Knight"));
-        findViewById(R.id.btnInceptionBookTomorrow).setOnClickListener(v ->
-                openSeatSelection("Inception"));
-    }
-
-    private void setupTrailerButtons() {
-        findViewById(R.id.btnDarkKnightTrailer).setOnClickListener(v ->
-                openTrailer("The Dark Knight"));
-        findViewById(R.id.btnInceptionTrailer).setOnClickListener(v ->
-                openTrailer("Inception"));
-        findViewById(R.id.btnInterstellarTrailer).setOnClickListener(v ->
-                openTrailer("Interstellar"));
-        findViewById(R.id.btnShawshankTrailer).setOnClickListener(v ->
-                openTrailer("The Shawshank Redemption"));
-
-        findViewById(R.id.btnDoremonTrailer).setOnClickListener(v ->
-                openTrailer("Doremon Adventure"));
-        findViewById(R.id.btnDoraTrailer).setOnClickListener(v ->
-                openTrailer("Dora Explorer"));
-        findViewById(R.id.btnDarkKnightTrailerTomorrow).setOnClickListener(v ->
-                openTrailer("The Dark Knight"));
-        findViewById(R.id.btnInceptionTrailerTomorrow).setOnClickListener(v ->
-                openTrailer("Inception"));
     }
 
     private void openSeatSelection(String movieName) {
