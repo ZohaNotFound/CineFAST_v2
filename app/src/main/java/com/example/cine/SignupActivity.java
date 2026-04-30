@@ -3,6 +3,7 @@ package com.example.cine;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -10,10 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-
-
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +21,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText etName, etEmail, etPassword, etConfirmPassword;
     private Button btnSignUp;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +29,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
 
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
@@ -68,22 +66,27 @@ public class SignupActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        String userId = mAuth.getCurrentUser().getUid();
+                        String uid = mAuth.getCurrentUser().getUid();
                         
-                        // Store user data in Realtime Database
-                        Map<String, String> user = new HashMap<>();
+                        // Step 1: Prepare User Data
+                        Map<String, Object> user = new HashMap<>();
                         user.put("name", name);
                         user.put("email", email);
-                        
-                        mDatabase.child("users").child(userId).setValue(user)
-                                .addOnCompleteListener(dbTask -> {
-                                    if (dbTask.isSuccessful()) {
-                                        Toast.makeText(SignupActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(SignupActivity.this, MainActivity.class));
-                                        finish();
-                                    } else {
-                                        Toast.makeText(SignupActivity.this, "Database Error: " + dbTask.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
+                        user.put("createdAt", System.currentTimeMillis());
+
+                        // Step 2: Store in Firestore using UID as Document ID
+                        db.collection("users")
+                                .document(uid)
+                                .set(user)
+                                .addOnSuccessListener(unused -> {
+                                    Log.d("USER", "User data saved to Firestore");
+                                    Toast.makeText(SignupActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                    finish();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Log.e("USER", "Error saving user", e);
+                                    Toast.makeText(SignupActivity.this, "Database Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 });
                     } else {
                         Toast.makeText(SignupActivity.this, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

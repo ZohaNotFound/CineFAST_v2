@@ -9,8 +9,8 @@
 9        android:targetSdkVersion="36" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\03627e48f73c1972c5646cc9a03c5fde\workspace\transformed\firebase-auth-22.3.0\AndroidManifest.xml:25:5-67
-11-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\03627e48f73c1972c5646cc9a03c5fde\workspace\transformed\firebase-auth-22.3.0\AndroidManifest.xml:25:22-64
+11-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:4:5-67
+11-->D:\CineFAST_v2\app\src\main\AndroidManifest.xml:4:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 12-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\03627e48f73c1972c5646cc9a03c5fde\workspace\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:5-79
 12-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\ZT\.gradle\caches\9.2.1\transforms\03627e48f73c1972c5646cc9a03c5fde\workspace\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:22-76

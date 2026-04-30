@@ -67,6 +67,7 @@ int id btnTrailer 0x0
 int id btnWatchTrailer 0x0
 int id buttonGetStarted 0x0
 int id cbRememberMe 0x0
+int id drawer_layout 0x0
 int id etConfirmPassword 0x0
 int id etEmail 0x0
 int id etName 0x0
@@ -93,6 +94,13 @@ int id logo 0x0
 int id movieDetails 0x0
 int id moviePoster 0x0
 int id movieTitle 0x0
+int id nav_bookings 0x0
+int id nav_header_email 0x0
+int id nav_header_logo 0x0
+int id nav_header_name 0x0
+int id nav_home 0x0
+int id nav_logout 0x0
+int id nav_view 0x0
 int id recyclerView 0x0
 int id screenCurve 0x0
 int id snackImage 0x0
@@ -103,6 +111,7 @@ int id summaryTextLayout 0x0
 int id tabLayout 0x0
 int id todayMovies 0x0
 int id tomorrowMovies 0x0
+int id toolbar 0x0
 int id tvCandyPrice 0x0
 int id tvCandyQty 0x0
 int id tvDarkKnightDetails 0x0
@@ -165,6 +174,8 @@ int layout fragment_snacks 0x0
 int layout fragment_ticket_summary 0x0
 int layout item_movie 0x0
 int layout item_snack 0x0
+int layout nav_header 0x0
+int menu drawer_menu 0x0
 int menu home_menu 0x0
 int string app_name 0x0
 int string gcm_defaultSenderId 0x0
@@ -172,6 +183,8 @@ int string google_api_key 0x0
 int string google_app_id 0x0
 int string google_crash_reporting_api_key 0x0
 int string google_storage_bucket 0x0
+int string navigation_drawer_close 0x0
+int string navigation_drawer_open 0x0
 int string project_id 0x0
 int style Base_Theme_Cine 0x0
 int style Theme_Cine 0x0

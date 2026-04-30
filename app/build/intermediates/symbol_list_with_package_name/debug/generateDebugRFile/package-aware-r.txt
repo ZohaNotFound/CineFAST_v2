@@ -68,6 +68,7 @@ id btnTrailer
 id btnWatchTrailer
 id buttonGetStarted
 id cbRememberMe
+id drawer_layout
 id etConfirmPassword
 id etEmail
 id etName
@@ -94,6 +95,13 @@ id logo
 id movieDetails
 id moviePoster
 id movieTitle
+id nav_bookings
+id nav_header_email
+id nav_header_logo
+id nav_header_name
+id nav_home
+id nav_logout
+id nav_view
 id recyclerView
 id screenCurve
 id snackImage
@@ -104,6 +112,7 @@ id summaryTextLayout
 id tabLayout
 id todayMovies
 id tomorrowMovies
+id toolbar
 id tvCandyPrice
 id tvCandyQty
 id tvDarkKnightDetails
@@ -166,6 +175,8 @@ layout fragment_snacks
 layout fragment_ticket_summary
 layout item_movie
 layout item_snack
+layout nav_header
+menu drawer_menu
 menu home_menu
 string app_name
 string gcm_defaultSenderId
@@ -173,6 +184,8 @@ string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
+string navigation_drawer_close
+string navigation_drawer_open
 string project_id
 style Base_Theme_Cine
 style Theme_Cine
