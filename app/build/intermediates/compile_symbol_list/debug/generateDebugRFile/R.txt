@@ -28,6 +28,7 @@ int id appNameImage 0x0
 int id btnBack 0x0
 int id btnBook 0x0
 int id btnBookSeats 0x0
+int id btnCancelBooking 0x0
 int id btnCandyMinus 0x0
 int id btnCandyPlus 0x0
 int id btnComingSoon 0x0
@@ -69,6 +70,7 @@ int id btnTrailer 0x0
 int id btnWatchTrailer 0x0
 int id buttonGetStarted 0x0
 int id cbRememberMe 0x0
+int id detailsLayout 0x0
 int id drawer_layout 0x0
 int id etConfirmPassword 0x0
 int id etEmail 0x0
@@ -89,6 +91,7 @@ int id imgInterstellar 0x0
 int id imgNachos 0x0
 int id imgPopcorn 0x0
 int id imgShawshank 0x0
+int id ivBookingPoster 0x0
 int id layoutComingSoonButtons 0x0
 int id layoutNowShowingButtons 0x0
 int id layoutShowtimes 0x0
@@ -122,7 +125,6 @@ int id tomorrowMovies 0x0
 int id toolbar 0x0
 int id tvAccountEmail 0x0
 int id tvAccountName 0x0
-int id tvBookingAmount 0x0
 int id tvBookingDateTime 0x0
 int id tvBookingMovie 0x0
 int id tvBookingSeats 0x0
@@ -139,6 +141,7 @@ int id tvDoremonDetails 0x0
 int id tvDoremonTitle 0x0
 int id tvDrinkPrice 0x0
 int id tvDrinkQty 0x0
+int id tvEmptyMessage 0x0
 int id tvGrandTotal 0x0
 int id tvInceptionDetails 0x0
 int id tvInceptionDetailsTomorrow 0x0

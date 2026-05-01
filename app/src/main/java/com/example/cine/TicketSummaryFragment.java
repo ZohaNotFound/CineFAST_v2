@@ -122,14 +122,15 @@ public class TicketSummaryFragment extends Fragment {
         booking.put("date", selectedDate);
         booking.put("time", selectedTime);
         booking.put("seats", seats);
-        booking.put("totalAmount", totalPrice);
+        booking.put("totalAmount", (double) totalPrice);
         booking.put("timestamp", System.currentTimeMillis());
+        booking.put("poster", movie.getPoster()); // Save poster for My Bookings
 
         db.collection("bookings")
                 .add(booking)
                 .addOnSuccessListener(documentReference -> {
                     Log.d("BOOKING", "Ticket saved to Firebase: " + documentReference.getId());
-                    Toast.makeText(getContext(), "Booking Confirmed & Saved!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Booking Confirmed!", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     Log.e("BOOKING", "Error saving ticket", e);

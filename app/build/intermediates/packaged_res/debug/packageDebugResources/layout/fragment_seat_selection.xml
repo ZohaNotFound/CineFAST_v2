@@ -121,35 +121,6 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Available" android:textColor="@color/white" android:textSize="12sp" />
     </LinearLayout>
 
-    <!-- Summary Text -->
-    <LinearLayout
-        android:id="@+id/summaryTextLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/layoutNowShowingButtons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-        <TextView
-            android:id="@+id/tvSelectedCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Selected: 0"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_gravity="center_horizontal" />
-        <TextView
-            android:id="@+id/tvTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total: $0"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
-
     <!-- Footer Buttons (Now Showing) -->
     <LinearLayout
         android:id="@+id/layoutNowShowingButtons"
@@ -157,7 +128,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
@@ -190,7 +161,7 @@
         android:orientation="horizontal"
         android:padding="16dp"
         android:visibility="gone"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
@@ -214,6 +185,35 @@
             android:text="Watch Trailer"
             android:textColor="@color/black"
             app:cornerRadius="28dp" />
+    </LinearLayout>
+
+    <!-- Summary Text -->
+    <LinearLayout
+        android:id="@+id/summaryTextLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/tvSelectedCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selected: 0"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: $0"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

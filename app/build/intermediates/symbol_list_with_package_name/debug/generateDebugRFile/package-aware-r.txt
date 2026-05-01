@@ -29,6 +29,7 @@ id appNameImage
 id btnBack
 id btnBook
 id btnBookSeats
+id btnCancelBooking
 id btnCandyMinus
 id btnCandyPlus
 id btnComingSoon
@@ -70,6 +71,7 @@ id btnTrailer
 id btnWatchTrailer
 id buttonGetStarted
 id cbRememberMe
+id detailsLayout
 id drawer_layout
 id etConfirmPassword
 id etEmail
@@ -90,6 +92,7 @@ id imgInterstellar
 id imgNachos
 id imgPopcorn
 id imgShawshank
+id ivBookingPoster
 id layoutComingSoonButtons
 id layoutNowShowingButtons
 id layoutShowtimes
@@ -123,7 +126,6 @@ id tomorrowMovies
 id toolbar
 id tvAccountEmail
 id tvAccountName
-id tvBookingAmount
 id tvBookingDateTime
 id tvBookingMovie
 id tvBookingSeats
@@ -140,6 +142,7 @@ id tvDoremonDetails
 id tvDoremonTitle
 id tvDrinkPrice
 id tvDrinkQty
+id tvEmptyMessage
 id tvGrandTotal
 id tvInceptionDetails
 id tvInceptionDetailsTomorrow

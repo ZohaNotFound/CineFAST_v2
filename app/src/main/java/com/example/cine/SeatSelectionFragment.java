@@ -72,6 +72,10 @@ public class SeatSelectionFragment extends Fragment {
             btnBack.setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
         }
 
+        // Initially disable booking buttons until seats are selected
+        if (btnProceedSnacks != null) btnProceedSnacks.setEnabled(false);
+        if (btnBookSeats != null) btnBookSeats.setEnabled(false);
+
         if (movie != null) {
             tvMovieName.setText(movie.getTitle());
             if (tvSelectedDate != null) tvSelectedDate.setText(selectedDate);
@@ -88,39 +92,44 @@ public class SeatSelectionFragment extends Fragment {
 
         createSeats();
 
-        btnProceedSnacks.setEnabled(false);
-        btnProceedSnacks.setOnClickListener(v -> {
-            SnacksFragment fragment = new SnacksFragment();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("MOVIE", movie);
-            bundle.putString("SELECTED_DATE", selectedDate);
-            bundle.putString("SELECTED_TIME", selectedTime);
-            bundle.putInt("SEAT_COUNT", selectedSeats.size());
-            bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
-            fragment.setArguments(bundle);
-            ((MainActivity) requireActivity()).replaceFragment(fragment);
-        });
+        if (btnProceedSnacks != null) {
+            btnProceedSnacks.setOnClickListener(v -> {
+                SnacksFragment fragment = new SnacksFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("MOVIE", movie);
+                bundle.putString("SELECTED_DATE", selectedDate);
+                bundle.putString("SELECTED_TIME", selectedTime);
+                bundle.putInt("SEAT_COUNT", selectedSeats.size());
+                bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
+                fragment.setArguments(bundle);
+                ((MainActivity) requireActivity()).replaceFragment(fragment);
+            });
+        }
 
-        btnBookSeats.setOnClickListener(v -> {
-            TicketSummaryFragment fragment = new TicketSummaryFragment();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("MOVIE", movie);
-            bundle.putString("SELECTED_DATE", selectedDate);
-            bundle.putString("SELECTED_TIME", selectedTime);
-            bundle.putInt("SEAT_COUNT", selectedSeats.size());
-            bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
-            bundle.putFloat("SNACKS_TOTAL", 0f);
-            fragment.setArguments(bundle);
-            ((MainActivity) requireActivity()).replaceFragment(fragment);
-        });
+        if (btnBookSeats != null) {
+            btnBookSeats.setOnClickListener(v -> {
+                TicketSummaryFragment fragment = new TicketSummaryFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("MOVIE", movie);
+                bundle.putString("SELECTED_DATE", selectedDate);
+                bundle.putString("SELECTED_TIME", selectedTime);
+                bundle.putInt("SEAT_COUNT", selectedSeats.size());
+                bundle.putFloat("TICKET_TOTAL", (float) (selectedSeats.size() * PRICE_PER_SEAT));
+                bundle.putFloat("SNACKS_TOTAL", 0f);
+                fragment.setArguments(bundle);
+                ((MainActivity) requireActivity()).replaceFragment(fragment);
+            });
+        }
 
-        btnWatchTrailer.setOnClickListener(v -> {
-            String url = movie.getTrailerUrl();
-            if (url != null && !url.isEmpty()) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
-            }
-        });
+        if (btnWatchTrailer != null) {
+            btnWatchTrailer.setOnClickListener(v -> {
+                String url = movie.getTrailerUrl();
+                if (url != null && !url.isEmpty()) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                }
+            });
+        }
 
         return view;
     }
@@ -206,7 +215,7 @@ public class SeatSelectionFragment extends Fragment {
         int count = selectedSeats.size();
         if (tvSelectedCount != null) tvSelectedCount.setText("Selected: " + count);
         if (tvTotalPrice != null) tvTotalPrice.setText("Total: $" + (count * PRICE_PER_SEAT));
-        btnProceedSnacks.setEnabled(count > 0);
-        btnBookSeats.setEnabled(count > 0);
+        if (btnProceedSnacks != null) btnProceedSnacks.setEnabled(count > 0);
+        if (btnBookSeats != null) btnBookSeats.setEnabled(count > 0);
     }
 }
